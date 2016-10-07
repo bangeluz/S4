@@ -1,6 +1,56 @@
 @charset "UTF-8";
 @import url(normalize.css);
 @import url(https://fonts.googleapis.com/css?family=Sintony:400,700|Poppins:400,300);
+@font-face {
+  font-family: "gestiona";
+  src: url("../fonts/gestiona.eot");
+  src: url("../fonts/gestiona.eot?#iefix") format("embedded-opentype"), url("../fonts/gestiona.woff") format("woff"), url("../fonts/gestiona.ttf") format("truetype"), url("../fonts/gestiona.svg#gestiona") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "gestiona" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "gestiona" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-luz:before {
+  content: "\61";
+}
+
+.icon-comentario:before {
+  content: "\62";
+}
+
+.icon-usuarios:before {
+  content: "\63";
+}
+
+.icon-pantalla:before {
+  content: "\64";
+}
+
 * {
   list-style: none;
   padding: 0;
@@ -267,6 +317,19 @@ section#soluciones article ul li .item {
   height: 200px;
   background: #FAA83A;
   border-radius: 100%;
+  position: relative;
+}
+
+section#soluciones article ul li .item [class*="icon-"] {
+  position: absolute;
+  margin: auto;
+  color: #E76114;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 8em;
 }
 
 section#soluciones article ul li p {
@@ -318,6 +381,19 @@ section#nuestra article ul li {
   height: 200px;
   border: #E76114 3px solid;
   border-radius: 100%;
+  position: relative;
+}
+
+section#nuestra article ul li [class*="icon-"] {
+  position: absolute;
+  margin: auto;
+  color: #E76114;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 8em;
 }
 
 section#nuestra article ul:last-child {
@@ -381,7 +457,7 @@ section#empre article figure {
 }
 
 section#nosotros {
-  background: url("../img/4.png");
+  background: url("../img/1.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
