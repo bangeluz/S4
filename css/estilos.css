@@ -1,6 +1,8 @@
 @charset "UTF-8";
 @import url(normalize.css);
 @import url(https://fonts.googleapis.com/css?family=Sintony:400,700|Poppins:400,300);
+@import url(owl.carousel.css);
+@import url(owl.theme.css);
 @font-face {
   font-family: "gestiona";
   src: url("../fonts/gestiona.eot");
@@ -110,6 +112,11 @@ h2 span {
   color: #E76114;
 }
 
+.ancla {
+  position: relative;
+  top: -4em;
+}
+
 #menu {
   display: flex;
   flex-wrap: nowrap;
@@ -192,7 +199,6 @@ h2 span {
 
 #pagina {
   width: 100%;
-  height: 100vh;
   background: #FEFEFE;
 }
 
@@ -207,7 +213,7 @@ section#header {
 }
 
 section#header article {
-  position: relative;
+  position: absolute;
   z-index: 2;
   padding: 0 2em 0 6em;
 }
@@ -220,57 +226,51 @@ section#header article p {
 }
 
 /*Slider */
-#c-slider {
-  z-index: 1;
-  margin: auto;
-  width: 100%;
-  position: absolute;
-  overflow: hidden;
+#btn-next {
+  right: 10px;
 }
 
-#c-slider #slider {
-  display: flex;
-  width: 400%;
-}
-
-#c-slider #slider section {
-  width: 100%;
-  display: flex;
-}
-
-#c-slider #slider section img {
+#owl-demo .item img {
   display: block;
+  width: 100%;
+  height: auto;
+}
+
+.owl-theme .owl-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
 
-#btn-prev, #btn-next {
-  width: 40px;
-  height: 40px;
-  color: #00354f;
-  background: rgba(254, 254, 254, 0.6);
+.owl-prev, .owl-next {
   position: absolute;
-  z-index: 3;
-  top: 50%;
-  transform: translateY(-50%);
-  line-height: 45px;
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  transition: .4s;
 }
 
-#btn-prev:hover, #btn-next:hover {
-  background: #FEFEFE;
+.owl-prev {
+  left: 0;
 }
 
-#btn-prev {
-  left: 10px;
+.owl-next {
+  right: 0;
 }
 
-#btn-next {
-  right: 10px;
+#owl-demo.owl-carousel .item {
+  display: flex;
+  align-items: center;
+}
+
+#owl-demo.owl-carousel article figure img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#owl-demo.owl-carousel article h1, #owl-demo.owl-carousel article p {
+  margin-left: 30px;
 }
 
 section#soluciones {
@@ -285,7 +285,7 @@ section#soluciones article ul {
 }
 
 section#soluciones article ul li {
-  padding: 2em 0;
+  padding: 2em 0 4em 0;
   width: 330px;
 }
 
@@ -303,7 +303,7 @@ section#soluciones article ul li:first-child a:hover::before {
   position: absolute;
   top: 0;
   left: 0;
-  line-height: 3.3em;
+  line-height: 2.3em;
   width: 100%;
   height: 100%;
   background: #cc0000;
@@ -313,8 +313,8 @@ section#soluciones article ul li:first-child a:hover::before {
 
 section#soluciones article ul li .item {
   margin: auto;
-  width: 200px;
-  height: 200px;
+  width: 175px;
+  height: 175px;
   background: #FAA83A;
   border-radius: 100%;
   position: relative;
@@ -329,30 +329,32 @@ section#soluciones article ul li .item [class*="icon-"] {
   align-items: center;
   width: 100%;
   height: 100%;
-  font-size: 8em;
+  font-size: 6em;
 }
 
 section#soluciones article ul li p {
   text-align: center;
-  padding: 2em 1em;
+  padding: 1em 1em;
   font-size: .9em;
 }
 
 section#soluciones article ul a {
-  padding: 10px;
-  border: 2px #E76114 solid;
+  padding: 5px 10px;
+  border: 2px #0097DC solid;
   text-align: center;
   text-transform: uppercase;
   display: block;
-  margin-top: 1em;
-  background: #E76114;
+  margin-top: 2em;
+  background: #0097DC;
   margin-bottom: 2em;
   color: #FEFEFE;
   transition: .3s;
+  margin-bottom: 0;
+  font-size: 1.5em;
 }
 
 section#soluciones article ul a:hover {
-  color: #E76114;
+  color: #0097DC;
   background: #FEFEFE;
 }
 
@@ -367,33 +369,65 @@ section#nuestra {
   background-attachment: fixed;
 }
 
+section#nuestra article {
+  margin-bottom: 2em;
+}
+
 section#nuestra article ul {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1300px;
+  background: rgba(16, 88, 126, 0.7);
 }
 
 section#nuestra article ul li {
-  margin: 10px auto;
-  width: 200px;
-  height: 200px;
-  border: #E76114 3px solid;
-  border-radius: 100%;
+  margin: auto;
+  width: 100%;
+  height: 240px;
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5em;
+}
+
+section#nuestra article ul li .item-ser {
+  width: 80%;
+  color: #FEFEFE;
+  margin: 0 1em 0 0;
+}
+
+section#nuestra article ul li .item-ser h3 {
+  font-family: 'Sintony';
+  text-transform: uppercase;
+  font-size: 2.5em;
+  color: #0097DC;
+}
+
+section#nuestra article ul li:nth-child(odd) .item-ser {
+  order: 2;
+  margin: 0 0 0 1em;
+}
+
+section#nuestra article ul li:hover {
+  background: rgba(16, 88, 126, 0.8);
 }
 
 section#nuestra article ul li [class*="icon-"] {
-  position: absolute;
-  margin: auto;
   color: #E76114;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
   font-size: 8em;
+  border: #E76114 3px solid;
+  border-radius: 100%;
 }
 
 section#nuestra article ul:last-child {
